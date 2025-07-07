@@ -35,15 +35,15 @@ async function fetchCities() {
   return null;
 }
 
-let hardcodedcity = [
-  {
-    "city":"London",
-"description":"London",
-"id":"london",
-"image":"London"
-   }
-]
-return hardcodedcity;
+// let hardcodedcity = [
+//   {
+//     "city":"London",
+// "description":"London",
+// "id":"london",
+// "image":"London"
+//    }
+// ]
+// return hardcodedcity;
 }
 
 //Implementation of DOM manipulation to add cities
@@ -55,7 +55,7 @@ function addCityToDOM(id, city, description, image) {
   tRow.setAttribute("class", "col-lg-3 col-sm-6 col-12  mt-4 position-relative tile");
   tRow.innerHTML = `
   <div class="tile">
-    <a id=${id} href="${config.backendEndpoint}/adventures?id=${id}"><img src=${image} class="card-img" alt=${city}></a>
+    <a id=${id} href="pages/adventures/?city=${id}"><img src=${image} class="card-img" alt=${city}></a>
   <div class="card-body position-absolute bottom-0 start-50 translate-middle-x text-white text-center">
     <h4 class="card-tile ">${city}</h4>
     <p class="card-text">${description}</p>

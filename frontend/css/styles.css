@@ -43,8 +43,24 @@ footer {
   flex-wrap: wrap; */
 }
 .tile {
-  position: relative;
+
+  /* width: calc(25% - 20px); */
+  /* padding: 6px; */
+  /* position: relative;
   height: 100%;
+  
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-transition: 0.2s all;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center; */
+  
+  position: relative;
+  height: 400px;
   /* width: calc(25% - 20px); */
   /* padding: 6px; */
   border-radius: 8px;
@@ -56,12 +72,19 @@ footer {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+
 }
 .tile img {
+  
   width: 100%;
   height: 100%;
   border-radius: 8px;
   -webkit-transition: 0.2s all;
+
+  /* width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  -webkit-transition: 0.2s all; */
   /* -webkit-filter: brightness(70%); */
 }
 .tile img:hover {
@@ -123,7 +146,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
+
 }
 .activity-card img {
   width: 100%;

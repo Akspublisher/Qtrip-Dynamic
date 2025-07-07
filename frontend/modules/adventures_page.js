@@ -5,14 +5,25 @@ import config from "../conf/index.js";
 function getCityFromURL(search) {
   // TODO: MODULE_ADVENTURES
   // 1. Extract the city id from the URL's Query Param and return it
-
+const params = new URLSearchParams(search);
+const city = params.get("city")
+//console.log(city);
+return city;
 }
 
 //Implementation of fetch call with a paramterized input based on city
 async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
-
+  try{
+  const respon = await fetch(config.backendEndpoint+`/adventures/?city=${city}`);
+  const finalRespon = await respon.json();
+  //console.log(finalRespon)
+  return finalRespon;
+  }catch(error){
+    //console.log(error)
+    return null;
+  } 
 }
 
 //Implementation of DOM manipulation to add adventures for the given city from list of adventures
@@ -20,20 +31,46 @@ function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
 
+let div = document.getElementById("data");
+
+div.innerHTML = "";
+div.classList.add("p-0");
+
+adventures.forEach((adventure) => {
+  let card = `<div class='col-6 col-md-3 mb-4' style='position:relative'>  
+  <span class='category-banner'>${adventure.category}</span> 
+  <a href='detail/?adventure=${adventure.id}' class='activity-card' id='${adventure.id}'> 
+  <img class=='card-img-top' src='${adventure.image}'></img> 
+  <div class='card-body'> 
+  <div class=' d-flex justify-content-between'>
+  <h6 class='card-title'>${adventure.name}</h6> 
+  <h6 class='card-text text-end'>₹${adventure.costPerHead}</h6>
+  </div> 
+  <div class=' d-flex justify-content-between'>
+  <h6 class='card-title'>Duration</h6> 
+  <h6 class='card-text'>${adventure.duration}</h6>
+  </div> </div> </a></div>`;
+  div.innerHTML = div.innerHTML + card;
+});
+
+// <h6 class='card-title d-flex justify-content-between'>${adventure.name}</h6> 
+// <h6 class='card-text text-end'>₹${adventure.costPerHead}</h6>
+// <strong class="card-text">${name}</strong>
+// <p class="card-text">${currency} ${costPerHead}</p>
 }
 
 //Implementation of filtering by duration which takes in a list of adventures, the lower bound and upper bound of duration and returns a filtered list of adventures.
 function filterByDuration(list, low, high) {
   // TODO: MODULE_FILTERS
   // 1. Filter adventures based on Duration and return filtered list
-
+  // return list.filter((item) => item.duration >= low && item.duration <=high);
 }
 
 //Implementation of filtering by category which takes in a list of adventures, list of categories to be filtered upon and returns a filtered list of adventures.
 function filterByCategory(list, categoryList) {
   // TODO: MODULE_FILTERS
   // 1. Filter adventures based on their Category and return filtered list
-
+  //  return list.filter((item) => categoryList.includes(item.category) )
 }
 
 // filters object looks like this filters = { duration: "", category: [] };
