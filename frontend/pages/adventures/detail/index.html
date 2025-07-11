@@ -121,7 +121,9 @@
         } from "../../../modules/adventure_details_page.js";
         (async function () {
             let adventureId = await getAdventureIdFromURL(window.location.search);
+            console.log(adventureId)
             let adventureDetails = await fetchAdventureDetails(adventureId);
+            console.log(adventureDetails)
             addAdventureDetailsToDOM(adventureDetails);
             addBootstrapPhotoGallery(adventureDetails.images);
             conditionalRenderingOfReservationPanel(adventureDetails);
